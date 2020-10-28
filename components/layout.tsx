@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
+import Image from 'next/image'
 import Link from 'next/link'
+import utilStyles from 'styles/utils.module.css'
+import styles from 'components/layout.module.css'
 
 const name = 'Denis Slavik'
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home }: React.PropsWithChildren<{ home?: boolean }>) {
   return (
     <div className={styles.container}>
       <Head>
@@ -27,10 +28,11 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {home ? (
           <>
-            <img
+            <Image
               src="/images/profile.jpg"
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={name}
+              unsized
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
